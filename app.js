@@ -72,6 +72,11 @@ app.use(expressValidator({
   } 
 }))
 
+//  Menus Setting, displaying log in and log out
+app.get('*', function(req,res, next){
+  res.locals.user = req.user || null;
+  next()
+})
 
 app.use(express.static(path.join(__dirname, 'public')));
 
